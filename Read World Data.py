@@ -64,28 +64,45 @@ while True:
                 APC = APC + 1 
             except:
                 print (str(APC))
-                APC = 0 
-                while True:
-                    Name = (data['VehicleData']['Vehicles'][APC]['Name'])
-                    TechType = (data['VehicleData']['Vehicles'][APC]['TechType'])
-                    Health = (data['VehicleData']['Vehicles'][APC]['Health'])
+                APC = 0
+            print("Vehicles Information:")
+            while True:
+                
+                Name = (data['VehicleData']['Vehicles'][APC]['Name'])
+                TechType = (data['VehicleData']['Vehicles'][APC]['TechType'])
+                Health = (data['VehicleData']['Vehicles'][APC]['Health'])
+                try:
                     LightOn = (data['VehicleData']['Vehicles'][APC]['LightOn'])
-                    Id = (data['VehicleData']['Vehicles'][APC]['Id'])
-                    DockingBayId = (data['VehicleData']['Vehicles'][APC]['DockingBayId']['value'])
-                    X = (data['VehicleData']['Vehicles'][APC]['Position']['X'])
-                    Y = (data['VehicleData']['Vehicles'][APC]['Position']['Y'])
-                    Z = (data['VehicleData']['Vehicles'][APC]['Position']['Z'])
-                    RotX = (data['VehicleData']['Vehicles'][APC]['Rotation']['X'])
-                    RotY = (data['VehicleData']['Vehicles'][APC]['Rotation']['Y'])
-                    RotZ = (data['VehicleData']['Vehicles'][APC]['Rotation']['Z'])
-                    RotW = (data['VehicleData']['Vehicles'][APC]['Rotation']['W'])
-                    
-                    
-                    
+                    if 'False' in str(LightsOn):
+                        LightOn = False
+                Id = (data['VehicleData']['Vehicles'][APC]['Id'])
+                DockingBayId = (data['VehicleData']['Vehicles'][APC]['DockingBayId']['value'])
+                if 'null' in str(DockingBayId):
+                    DockingBayId = "No Id (Can't be docked)") 
+                X = (data['VehicleData']['Vehicles'][APC]['Position']['X'])
+                Y = (data['VehicleData']['Vehicles'][APC]['Position']['Y'])
+                Z = (data['VehicleData']['Vehicles'][APC]['Position']['Z'])
+                RotX = (data['VehicleData']['Vehicles'][APC]['Rotation']['X'])
+                RotY = (data['VehicleData']['Vehicles'][APC]['Rotation']['Y'])
+                RotZ = (data['VehicleData']['Vehicles'][APC]['Rotation']['Z'])
+                RotW = (data['VehicleData']['Vehicles'][APC]['Rotation']['W'])
+                Type = (data['VehicleData']['Vehicles'][APC]['$type'])
+                if 'Seamoth' in str(TechType):
+                    print ('''              Name  : ''', str(Name), '''
+                                        Type  : ''', str(TechType), '''
+                                        Health: ''', str(LightsOn), ''' ''')
+                    pass
+                
+                elif 'Cyclops' in str(TechType):
+                    pass
+                
+                elif 'Exosuit' in str (TechType):
+                    pass
+                else:
+                    print ("            No Vehicles Found")
                     
                 break
-        print('''Vehicles Information:
-                        ''')
+
         
         Count = Count + 1
         break
