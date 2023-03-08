@@ -74,11 +74,17 @@ while True:
                 try:
                     LightOn = (data['VehicleData']['Vehicles'][APC]['LightOn'])
                     if 'False' in str(LightsOn):
-                        LightOn = False
+                        LightOn = "Off"
+                    elif 'True' in str(LightsOn):
+                        LightOn = "On"
+                    else:
+                        LightOn = "Unknown"
+                except:
+                    pass
                 Id = (data['VehicleData']['Vehicles'][APC]['Id'])
                 DockingBayId = (data['VehicleData']['Vehicles'][APC]['DockingBayId']['value'])
                 if 'null' in str(DockingBayId):
-                    DockingBayId = "No Id (Can't be docked)") 
+                    DockingBayId = "No Id (Can't be docked)")
                 X = (data['VehicleData']['Vehicles'][APC]['Position']['X'])
                 Y = (data['VehicleData']['Vehicles'][APC]['Position']['Y'])
                 Z = (data['VehicleData']['Vehicles'][APC]['Position']['Z'])
@@ -87,10 +93,36 @@ while True:
                 RotZ = (data['VehicleData']['Vehicles'][APC]['Rotation']['Z'])
                 RotW = (data['VehicleData']['Vehicles'][APC]['Rotation']['W'])
                 Type = (data['VehicleData']['Vehicles'][APC]['$type'])
+                try:
+                    FloodLightsOn = (data['VehicleData']['Vehicles'][APC]['FloodLightsOn'])
+                    InternalLightsOn = (data['VehicleData']['Vehicles'][APC]['InternalLightsOn'])
+                    SilentRunningOn = (data['VehicleData']['Vehicles'][APC]['SilentRunningOn'])
+                    ShieldOn = (data['VehicleData']['Vehicles'][APC]['ShieldOn'])
+                    SonarOn = (data['VehicleData']['Vehicles'][APC]['SonarOn'])
+                    EngineState = (data['VehicleData']['Vehicles'][APC]['EngineState'])
+                    EngineSpeed = (data['VehicleData']['Vehicles'][APC]['EngineMode'])
+                    
+                except:
+                    pass
+                    
                 if 'Seamoth' in str(TechType):
                     print ('''              Name  : ''', str(Name), '''
-                                        Type  : ''', str(TechType), '''
-                                        Health: ''', str(LightsOn), ''' ''')
+                                        Type    : ''', str(TechType), '''
+                                        Health  : ''', str(Health), '''
+                                        Lights  : ''', str(LightOn), '''
+                                        Position:
+                                                    X = ''', str(X),'''
+                                                    Y = ''', str(Y),'''
+                                                    Z = ''', str(Z),'''
+                                        Rotation:
+                                                    X = ''', str(RotX),'''
+                                                    Y = ''', str(RotY),'''
+                                                    Z = ''', str(RotZ),'''
+                                                    W = ''', str(RotW),'''
+                                        
+                                        Docking Id: ''', str(DockingBayId),'''
+                                        Id        : ''', str(Id),'''
+''')
                     pass
                 
                 elif 'Cyclops' in str(TechType):
